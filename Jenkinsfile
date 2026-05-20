@@ -1,11 +1,3 @@
-
-inside the Jenkinsfile.
-
-Jenkinsfile must contain ONLY Groovy pipeline code.
-
-Use this exact corrected Jenkinsfile:
-
-:::writing{variant="standard" id="62481"}
 pipeline {
     agent any
 
@@ -86,7 +78,7 @@ pipeline {
                 sh 'curl -f http://resume-service:3002/health'
                 sh 'curl -f http://ai-service:3003/health'
 
-                echo '✅ All services are healthy!'
+                echo 'All services are healthy!'
             }
         }
     }
@@ -94,11 +86,11 @@ pipeline {
     post {
 
         success {
-            echo '✅ BUILD SUCCESS - All stages passed!'
+            echo 'BUILD SUCCESS - All stages passed!'
         }
 
         failure {
-            echo '❌ BUILD FAILED - Check logs above'
+            echo 'BUILD FAILED - Check logs above'
 
             sh '''
             docker compose ps
@@ -111,9 +103,3 @@ pipeline {
         }
     }
 }
-:::
-
-Then save the file as:
-
-```text id="p9t2tx"
-Jenkinsfile
